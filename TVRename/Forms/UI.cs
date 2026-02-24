@@ -1,3 +1,5 @@
+#nullable disable
+
 //
 // Main website for TVRename is http://tvrename.com
 //
