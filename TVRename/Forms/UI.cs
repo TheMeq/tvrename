@@ -980,7 +980,7 @@ public partial class UI : Form, IDialogParent
         {
             Size = new Size(16, 16),
             Cursor = Cursors.Default,
-            Image = Resources.DeleteSmall,
+            Image = Properties.Resources.DeleteSmall,
             Name = "Clear"
         };
 
@@ -1151,7 +1151,7 @@ public partial class UI : Form, IDialogParent
         splitContainer1.Panel2Collapsed = bool.Parse(x.Attribute("HTMLCollapsed")?.Value ?? "false");
         if (splitContainer1.Panel2Collapsed)
         {
-            btnHideHTMLPanel.Image = Resources.FillLeft;
+            btnHideHTMLPanel.Image = Properties.Resources.FillLeft;
         }
     }
 
@@ -1819,7 +1819,7 @@ public partial class UI : Form, IDialogParent
         if (TVSettings.Instance.HideWtWSpoilers &&
             (ei.HowLong() != "Aired" || lvWhenToWatch.Items[n].ImageIndex == 1))
         {
-            txtWhenToWatchSynopsis.Text = Resources.Spoilers_Hidden_Text;
+            txtWhenToWatchSynopsis.Text = Properties.Resources.Spoilers_Hidden_Text;
         }
         else if (ei.Type == ProcessedEpisode.ProcessedEpisodeType.merged)
         {
@@ -4488,7 +4488,7 @@ public partial class UI : Form, IDialogParent
     private void ToolStripButton5_Click(object sender, EventArgs e)
     {
         splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
-        btnHideHTMLPanel.Image = splitContainer1.Panel2Collapsed ? Resources.FillRight : Resources.FillLeft;
+        btnHideHTMLPanel.Image = splitContainer1.Panel2Collapsed ? Properties.Resources.FillRight : Properties.Resources.FillLeft;
     }
 
     private void BtnMyShowsCollapse_Click(object sender, EventArgs e)

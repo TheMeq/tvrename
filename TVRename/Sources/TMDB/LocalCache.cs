@@ -572,7 +572,7 @@ public class LocalCache : MediaCache, iMovieSource, iTVSource
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="webCall"></param>
@@ -768,6 +768,8 @@ public class LocalCache : MediaCache, iMovieSource, iTVSource
                 seasonUrl, downloadedSeason.PosterPath, downloadedSeries.Id);
 
             m.AddSeason(newSeason);
+
+
 
             foreach (TvSeasonEpisode? downloadedEpisode in downloadedSeason.Episodes)
             {
@@ -1300,7 +1302,7 @@ public class LocalCache : MediaCache, iMovieSource, iTVSource
         Task<SearchContainer<SearchTv>> topRated = Client.GetTvShowTopRatedAsync(language: languageCode);
         Task<SearchContainer<SearchTv>> trending = Client.GetTrendingTvAsync(TimeWindow.Week);
         Recomendations returnValue = new();
-        
+
         await topRated.ConfigureAwait(false);
         foreach (SearchTv? top in topRated.Result.Results)
         {
@@ -1390,7 +1392,7 @@ public class LocalCache : MediaCache, iMovieSource, iTVSource
             string errorMessage = $"Error obtaining TMDB Recommendations for {movie.Name}";
 
             HandleWebErrorsFor(() => GetMovieRecommendations(languageCode, movie, returnValue), errorMessage);
-            
+
             sender.ReportProgress(100 * current++ / total, movie.CachedMovie?.Name);
         }
         return returnValue;
