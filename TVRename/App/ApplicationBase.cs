@@ -1,3 +1,5 @@
+#nullable disable
+
 using Alphaleonis.Win32.Filesystem;
 using Microsoft.VisualBasic.ApplicationServices;
 using Microsoft.Win32;
