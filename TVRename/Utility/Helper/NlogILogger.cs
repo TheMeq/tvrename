@@ -51,7 +51,7 @@ public class NlogILogger : ILogger
     }
 
     /// <exception cref="ArgumentNullException"><paramref name="state"/> is <see langword="null"/></exception>
-    public IDisposable BeginScope<TState>(TState state)
+    public IDisposable? BeginScope<TState>(TState state) where TState : notnull
     {
         if (state is null)
         {
