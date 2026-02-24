@@ -38,7 +38,7 @@ internal class UpcomingiCAL : UpcomingExporter
         {
             Calendar calendar = new() { ProductId = "Upcoming Shows Exported by TV Rename http://www.tvrename.com" };
 
-            foreach (CalendarEvent? ev in episodes.Select(CreateEvent).Where(ev => ev is not null))
+            foreach (CalendarEvent ev in episodes.Select(CreateEvent).OfType<CalendarEvent>())
             {
                 calendar.Events.Add(ev);
             }
