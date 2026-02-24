@@ -15,6 +15,7 @@ using SharpCompress.Archives.Tar;
 using SharpCompress.Archives.Zip;
 using SharpCompress.Common;
 using System;
+using System.Linq;
 using System.Threading;
 
 namespace TVRename;
@@ -92,13 +93,9 @@ public class ActionUnArchive : ActionFileOperation
 
             using (IArchive archive = GetArchive(archiveFile))
             {
-                foreach (IArchiveEntry entry in archive.Entries)
+                foreach (IArchiveEntry entry in archive.Entries.Where(e => !e.IsDirectory))
                 {
-                    entry.WriteToDirectory(archiveFile.FileFullNameNoExt(), new ExtractionOptions
-                    {
-                        ExtractFullPath = true,
-                        Overwrite = true,
-                    });
+                    entry.WriteToDirectory(archiveFile.FileFullNameNoExt());
                 }
             }
 

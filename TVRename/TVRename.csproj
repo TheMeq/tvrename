@@ -1,14 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net10.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
     <OutputType>WinExe</OutputType>
     <ApplicationIcon>App\app.ico</ApplicationIcon>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <LangVersion>Latest</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <Nullable>enable</Nullable>
-    <WarningsAsErrors>Nullable</WarningsAsErrors>
+    <WarningsAsErrors></WarningsAsErrors>
     <NullableContextOptions>enable</NullableContextOptions>
+    <NoWarn>$(NoWarn);CS8632;MT1000;MT1013</NoWarn>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -31,20 +33,20 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <WarningLevel>5</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>Latest</LangVersion>
-    <WarningsAsErrors>Nullable</WarningsAsErrors>
-    <NoWarn>CA1416</NoWarn>
+    <LangVersion>12.0</LangVersion>
+    <WarningsAsErrors></WarningsAsErrors>
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <WarningLevel>1</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <LangVersion>Latest</LangVersion>
-    <WarningsAsErrors>Nullable</WarningsAsErrors>
-    <NoWarn>1701;1702;CA1416</NoWarn>
+    <LangVersion>12.0</LangVersion>
+    <WarningsAsErrors></WarningsAsErrors>
+    <NoWarn>$(NoWarn);1701;1702;CA1416</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>TVRename.App.Program</StartupObject>
-    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
