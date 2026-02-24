@@ -102,4 +102,9 @@ public class BrowserRequestHandler : IRequestHandler
     public void OnRenderViewReady(IWebBrowser browserControl, IBrowser browser)
     {
     }
+
+    public void OnRenderProcessTerminated(IWebBrowser chromiumWebBrowser, IBrowser browser, CefTerminationStatus status, int errorCode, string errorMessage)
+    {
+        throw new NotImplementedException();
+    }
 }
