@@ -1283,6 +1283,8 @@ public sealed class TVSettings
         {
         }
 
+        [Obsolete("Formatter-based serialization constructor retained for legacy settings compatibility.")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "SYSLIB0051:Legacy serialization APIs are obsolete", Justification = "Required to deserialize existing user settings.")]
         protected ShowStatusColoringTypeList(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }

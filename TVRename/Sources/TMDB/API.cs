@@ -17,12 +17,12 @@ internal static class API
     private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
 
     public static IEnumerable<ChangesListItem> GetChangesMovies(this TMDbClient client, UpdateTimeTracker latestUpdateTime, CancellationToken cts)
-        => GetChanges(client.GetMoviesChangesAsync, latestUpdateTime, cts);
+        => GetChanges((page, start, end, token) => client.GetMoviesChangesAsync(page, start, end, token), latestUpdateTime, cts);
 
     public static IEnumerable<ChangesListItem> GetChangesShows(this TMDbClient client, UpdateTimeTracker latestUpdateTime, CancellationToken cts)
-        => GetChanges(client.GetTvChangesAsync, latestUpdateTime, cts);
+        => GetChanges((page, start, end, token) => client.GetTvChangesAsync(page, start, end, token), latestUpdateTime, cts);
 
-    private static IEnumerable<ChangesListItem> GetChanges(Func<int, DateTime?, DateTime?, CancellationToken, Task<SearchContainer<ChangesListItem>>> changeMethod, UpdateTimeTracker latestUpdateTime, CancellationToken cts)
+    private static IEnumerable<ChangesListItem> GetChanges(Func<int, DateTime?, DateTime?, CancellationToken, Task<SearchContainer<ChangesListItem>?>> changeMethod, UpdateTimeTracker latestUpdateTime, CancellationToken cts)
     {
         //We need to ask for updates in blocks of 14 days
         //We'll keep asking until we get to a date within 14 days of today
@@ -44,7 +44,12 @@ internal static class API
                     {
                         throw new TaskCanceledException("Manual Cancellation");
                     }
-                    SearchContainer<ChangesListItem> response = changeMethod(currentPage, time, null, cts).Result;
+                    SearchContainer<ChangesListItem>? response = changeMethod(currentPage, time, null, cts).Result;
+                    if (response?.Results is null)
+                    {
+                        continue;
+                    }
+
                     updatesResponses.AddRange(response.Results);
 
                     maxPage = response.TotalPages;
