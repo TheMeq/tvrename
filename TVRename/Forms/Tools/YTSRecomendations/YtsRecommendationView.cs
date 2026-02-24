@@ -172,7 +172,7 @@ public partial class YtsRecommendationView : Form
             }
             else
             {
-                Add(relatedMovie.Id, new Tuple<API.YtsMovie, List<Tuple<API.YtsMovie, MovieConfiguration>>>(relatedMovie, [.. [new(ytsMovie, existingMovie)]]));
+                Add(relatedMovie.Id, new Tuple<API.YtsMovie, List<Tuple<API.YtsMovie, MovieConfiguration>>>(relatedMovie, new List<Tuple<API.YtsMovie, MovieConfiguration>> { Tuple.Create(ytsMovie, existingMovie) }));
             }
         }
 

@@ -193,7 +193,7 @@ public partial class UI : Form, IDialogParent
 
     private static void WaitForCefInitialised()
     {
-        WaitFor(() => CefSharp.Cef.IsInitialized, 10, "browser to initialise", true);
+        WaitFor(() => CefSharp.Cef.IsInitialized == true, 10, "browser to initialise", true);
     }
 
     private static void WaitFor(Func<bool> func, int maxSeconds, string textMessage, bool doLogging)
